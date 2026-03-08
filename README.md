@@ -7,7 +7,7 @@ I focus on transforming real-world data into **actionable business insights** us
 ---
 
 # 🚀 Featured Project
-
+[![RevenueIQ AI](https://img.shields.io/badge/Live_Demo-RevenueIQ_AI-success?style=for-the-badge)](https://revenueiq-ai.onrender.com)
 ## RevenueIQ AI – Business Intelligence Platform
 
 AI-powered analytics system that analyzed **534K retail transactions ($10.6M revenue)** and identified **$4M+ business opportunities**.
