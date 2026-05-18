@@ -8,7 +8,7 @@ I build **production-grade AI systems** that turn real-world data into intellige
 
 # 🚀 Featured Project
 
-[![NexusIQ AI](https://img.shields.io/badge/Live_Demo-NexusIQ_AI-blueviolet?style=for-the-badge)](https://bit.ly/NexusIQ-AI)
+[![NexusIQ AI](https://img.shields.io/badge/Live_Demo-NexusIQ_AI-blueviolet?style=for-the-badge)](https://nexusiq-ai.streamlit.app/)
 
 ## NexusIQ AI — Multi-Agent Business Intelligence Platform
 
