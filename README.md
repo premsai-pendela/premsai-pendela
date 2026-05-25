@@ -2,6 +2,8 @@
 
 **Data Analyst | AI Engineer | Multi-Agent Systems**
 
+![](https://komarev.com/ghpvc/?username=premsai-pendela&color=red&style=plastic)
+
 I build **production-grade AI systems** that turn real-world data into intelligent, decision-ready insights — using LLMs, multi-agent orchestration, SQL, and machine learning.
 
 ---
