@@ -1,160 +1,91 @@
 # 👋 Hi, I'm Naga Prem Sai Pendela
 
-**AI Engineer | Applied AI Engineer | Multi-Agent Systems**
+**Applied AI & Data Solutions Engineer**
 
-![](https://komarev.com/ghpvc/?username=premsai-pendela&color=blueviolet&style=plastic)
-
-I build **production-grade AI systems** that turn real-world data into intelligent, decision-ready insights — using multi-agent orchestration, LLMs, hybrid RAG, and machine learning — deployed on real infrastructure.
+I build **governed, role-aware AI systems** over SQL and documents — the kind where the hard part isn't getting an LLM to answer, it's making sure it only answers with what it's allowed to know, and can prove its work.
 
 ---
 
 ## 🚀 Featured Project
 
-[![NexusIQ AI](https://img.shields.io/badge/Live_Demo-NexusIQ_AI-blueviolet?style=for-the-badge)](https://nexusiq-ai.com)
-[![GitHub](https://img.shields.io/badge/GitHub-NexusIQ_AI-black?style=for-the-badge&logo=github)](https://github.com/premsai-pendela/NexusIQ-AI)
+[![NexusIQ AI Platform](https://img.shields.io/badge/GitHub-NexusIQAI_Platform-24292e?style=for-the-badge&logo=github)](https://github.com/premsai-pendela/NexusIQAI-Platform)
 
-## NexusIQ AI — Production 4-Agent Business Intelligence Platform
+### NexusIQ AI Platform — Governed Multi-Company AI Data Analyst
 
-> *Ask a business question in plain English. Get a cited, confidence-scored answer validated across SQL, documents, and live web data — in 5–12 seconds.*
+> *Employees log in to their company's workspace and ask questions in plain English. Answers carry SQL, citations, a chart, an access decision, and a reviewable trace.*
 
-An enterprise-grade **multi-agent AI platform** deployed on **AWS EC2** that routes natural language questions through a coordinated network of specialized agents — then cross-validates results across sources before returning a single trusted answer.
-
-### Architecture
-
-```
-User Question
-      │
-Query Router  (Gemini 2.5 Flash — smart routing to sql/rag/web/all)
-      │
-      ├──────────────┬──────────────────┐
-      ▼              ▼                  ▼
-  SQL Agent      RAG Agent          Web Agent
- (90K rows       (43 PDFs           (5 product
-  Supabase)       ChromaDB)          categories
-                  BM25 + vector      4 scrapers)
-      │              │                  │
-      └──────────────┴──────────────────┘
-                     │
-              Fusion Agent
-    Cross-validates SQL ↔ PDF numbers (< 1% = HIGH confidence)
-    Deterministic formatting for validated facts (no LLM call)
-    LLM synthesis only for conflicts or low confidence
-                     │
-         Cited answer · Confidence badge · Trace ID
-```
-
-### Screenshots
-
-| Home | Multi-Agent Fusion |
-|---|---|
-| ![Home](https://raw.githubusercontent.com/premsai-pendela/NexusIQ-AI/main/Screenshots/home.png) | ![Multi-Agent](https://raw.githubusercontent.com/premsai-pendela/NexusIQ-AI/main/Screenshots/mutli-agent.png) |
-
-| SQL Agent | Auto Chart |
-|---|---|
-| ![SQL](https://raw.githubusercontent.com/premsai-pendela/NexusIQ-AI/main/Screenshots/chat-sql.png) | ![Chart](https://raw.githubusercontent.com/premsai-pendela/NexusIQ-AI/main/Screenshots/chart.png) |
+Each company gets its own SQL schema and document "brain." Role-based access is enforced at **four independent layers** — SQL prompt scoping, `sqlglot` AST table allowlists, ChromaDB metadata filters, and response-level citation checks — so a request can never widen what it's allowed to see.
 
 ### What Makes It Different
 
 | Capability | Details |
 |---|---|
-| **SQL Agent** | Natural language → SQL → Interactive Plotly charts on 90K rows · Supabase PostgreSQL |
-| **RAG Agent** | Hybrid BM25 + vector search + cross-encoder reranker · **97.7% Hit@5**, 0.919 Context Recall |
-| **Cross-Validation** | SQL ↔ PDF numbers reconciled to **0.03% delta** — HIGH confidence without manual fact-checking |
-| **Fusion Agent** | Orchestrates all agents · deterministic formatting for validated facts · confidence badges |
-| **Web Agent** | Live competitor pricing via Selenium + BeautifulSoup + Shopify API · 24hr TTL cache |
-| **Fault Tolerance** | Circuit breaker: Gemini 2.5 Flash → Groq LLaMA 3.3-70B automatic fallback |
-| **Observability** | Every query traced to AWS CloudWatch + local JSONL ledger · LLM gateway telemetry |
+| **Role-scoped access** | 4-layer enforcement baked into the agent instance, not a request filter |
+| **Deterministic analyst layer** | 15 business-metric families answered with **zero LLM calls** |
+| **Session memory** | Multi-turn follow-ups resolve deterministically; re-authorized every turn |
+| **Admin Health Check Agent** | Manually-triggered trace audit that proposes fixes, gated by human verification |
+| **Full audit loop** | Per-employee traces, company-scoped feedback review, trace-leakage auditing |
 
-### Scale & Production
+### Scale & Stack
 
-- **90,500 sales transactions · $175.6M revenue** across 5 regions and 5 product categories
-- **43 business PDFs** across 8 categories — 425 ChromaDB chunks · all grounded in live Supabase data
-- **Dual-LLM**: Gemini 2.5 Flash (primary) + Groq LLaMA 3.3-70B (fallback) with circuit breaker
-- **Parallel execution** via `ThreadPoolExecutor` — ~60% latency reduction vs. sequential agents
-- **Test coverage**: 97 unit tests · 12 golden eval cases · 7 offline evals · 43-query RAG benchmark
-- **Deployed**: AWS EC2 (`t3.small`) · Docker · ECR · S3 · Secrets Manager · CloudWatch · GitHub Actions CI/CD · Caddy HTTPS · custom domain
+- **3 synthetic companies**, 35-table schema each, on **AWS RDS Postgres**
+- **347+ tests**: AST denial, RAG boundary, cross-company memory isolation
+- Deployed on **AWS ECS Fargate**, behind an **ALB with ACM-issued HTTPS**, frontend on **AWS Amplify**
+- Model gateway across **Gemini, Groq, NVIDIA NIM, AWS Bedrock**, and local Ollama fallback
 
-`Python` `LangGraph` `Streamlit` `Google Gemini` `Groq` `PostgreSQL/Supabase` `ChromaDB` `BM25` `AWS EC2` `Docker` `GitHub Actions`
+`Python` `FastAPI` `LangGraph` `Next.js` `TypeScript` `PostgreSQL` `ChromaDB` `sqlglot` `AWS (ECS, RDS, Bedrock, ALB)` `Docker`
 
 ---
 
 ## 📁 Other Projects
 
-### RevenueIQ AI — ML-Powered Business Intelligence Platform
+### RevenueIQ AI — Business Analytics & ML Platform
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-RevenueIQ_AI-34d399?style=for-the-badge)](https://revenueiq-ai-9cnn.onrender.com)
-[![GitHub](https://img.shields.io/badge/GitHub-RevenueIQ_AI-black?style=for-the-badge&logo=github)](https://github.com/premsai-pendela/revenueiq-ai)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-RevenueIQ_AI-success?style=for-the-badge)](https://revenueiq-ai-9cnn.onrender.com)
 
-ML-powered analytics platform that analyzed **534K retail transactions ($10.6M revenue)** and surfaced **$4M+ in actionable business opportunities**.
+Processed **534K+ public UCI retail transactions** into business-ready analytics across **$10.6M analyzed revenue** and **4,339 customers**.
 
-| Model | Result |
-|---|---|
-| Random Forest churn prediction | **95% F1-score** · 978 at-risk customers flagged |
-| KMeans segmentation (k=5) | 18 VIP Champions ($96K avg each) · 1,692 Potential Growers |
-| Isolation Forest anomaly detection | 5,249 anomalies — identified as B2B/wholesale, not fraud |
-| Prophet + ARIMA/ETS forecasting | $1.61M 30-day forecast · 9% MAPE (91% accuracy) |
-| Groq LLM executive reports | 2 hours → **60 seconds** report generation |
+- Built **5 ML/analytics workflows**: 95% F1 churn prediction, K-Means segmentation, Isolation Forest anomaly detection, ARIMA/ETS forecasting — identified **978 at-risk customers**
+- Accelerated SQL analytics **7.7×** by replacing Pandas paths with DuckDB
+- Automated executive reports with Groq LLM — cut report generation from **2 hours to 60 seconds**
 
-- **7.74× faster queries** via DuckDB over Pandas — dashboard reload 45s → ~3s
-- ML results stored as **DuckDB tables** — queryable by the whole team via SQL, not locked in Python
-- Deployed on Streamlit Cloud + Render · UptimeRobot keep-alive
+`Python` `SQL` `DuckDB` `Scikit-learn` `Streamlit` `Plotly` `Groq LLM`
 
-`Python` `Scikit-learn` `DuckDB` `SQL` `Groq LLaMA 3.3-70B` `Plotly` `Streamlit` `Pandas` `Prophet`
-
----
-
-## 📄 Publication
-
-**IEEE ADICS 2024** — [Enhancing Cyberbullying Detection Using Machine Learning](https://ieeexplore.ieee.org/document/10533585)
-
-Built and validated a **47,000-instance NLP dataset** for cyberbullying detection. Led data pipeline: text normalisation, deduplication, label validation, feature engineering. Comparative evaluation of SVC, MNB, and GloVe-based pipelines — **79.8% classification accuracy**. Published peer-reviewed methodology at IEEE ADICS 2024.
+➡️ https://github.com/premsai-pendela/revenueiq-ai
 
 ---
 
 ## 🛠 Technical Skills
 
-### AI & LLM Engineering
-Multi-Agent Orchestration · LangGraph · RAG Pipelines · Hybrid BM25 + Vector Search
-Cross-Encoder Reranking · LLM Routing & Fallback · Prompt Engineering
-Google Gemini · Groq · ChromaDB · HuggingFace Embeddings
+**AI/LLM Engineering**: Multi-agent orchestration (LangGraph) · RAG (hybrid BM25 + vector, cross-encoder reranking) · role-based access control for LLM systems · deterministic answer routing · Gemini · Groq · NVIDIA NIM · AWS Bedrock
 
-### Languages & Data
-Python · SQL · Pandas · NumPy · Feature Engineering · Exploratory Data Analysis
+**Reliability & Evals**: LLM evals, golden tests, retrieval benchmarks, evidence gating, SQL AST validation (`sqlglot`), trace logging/audit, cost-aware model routing
 
-### Machine Learning
-Scikit-learn · Random Forest · KMeans · Isolation Forest · Prophet · ARIMA/ETS
-Time Series Forecasting · Customer Segmentation · Churn Prediction · Anomaly Detection
+**Languages & Backend**: Python · SQL · TypeScript · FastAPI · Next.js/React · REST APIs
 
-### Databases
-PostgreSQL · Supabase · DuckDB · ChromaDB · SQLAlchemy · Vector Databases
+**Data & Cloud**: PostgreSQL (AWS RDS) · SQLAlchemy · ChromaDB · DuckDB · AWS (ECS Fargate, ALB/ACM, RDS, Bedrock, Secrets Manager, CloudWatch, ECR) · AWS Amplify · Docker
 
-### Cloud & DevOps
-AWS EC2 · AWS ECR · AWS S3 · AWS Secrets Manager · CloudWatch
-Docker · GitHub Actions · CI/CD · Caddy · HTTPS
-
-### Visualization & BI
-Plotly · Streamlit · Plotly Dash · Matplotlib
+**Machine Learning**: Scikit-learn · Time series forecasting · Customer segmentation · Churn prediction
 
 ---
 
-## 🎯 Currently Targeting
+## 🎯 Current Focus
 
-- **AI Engineer** and **Applied AI Engineer** roles at companies shipping production AI
-- **Forward Deployed Engineer (FDE)** roles at AI-first companies (Anthropic, OpenAI, Scale AI)
-- Open to roles involving multi-agent systems, LLM engineering, RAG pipelines, and cloud-deployed AI
+- Building **governed, multi-tenant AI systems** where access control is structural, not prompt-based
+- Designing **deterministic-first analytics** so products stay reliable when LLM providers rate-limit
+- Deepening AWS cloud deployment experience — ECS, RDS, Bedrock, IAM-scoped infrastructure
 
 ---
 
-## 📫 Connect
+## 📫 Connect With Me
 
 📧 nagapremsaip07@gmail.com
-💼 [linkedin.com/in/nagapremsai-pendela](https://www.linkedin.com/in/nagapremsai-pendela/)
-🌐 [premsai-pendela.github.io](https://premsai-pendela.github.io)
+💼 https://www.linkedin.com/in/nagapremsai-pendela/
+💻 https://github.com/premsai-pendela
 
 ---
 
-⭐ Open to collaborating on **production AI systems, multi-agent orchestration, and LLM engineering** — feel free to reach out.
-
+⭐ Open to **Applied AI Engineer / AI Data Solutions Engineer** roles — feel free to reach out.
 <!---
 premsai-pendela/premsai-pendela is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 --->
