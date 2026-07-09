@@ -9,6 +9,7 @@ I build **governed, role-aware AI systems** over SQL and documents — the kind 
 ## 🚀 Featured Project
 
 [![NexusIQ AI Platform](https://img.shields.io/badge/GitHub-NexusIQAI_Platform-24292e?style=for-the-badge&logo=github)](https://github.com/premsai-pendela/NexusIQAI-Platform)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-nexusiq--ai.com-success?style=for-the-badge)](https://nexusiq-ai.com/platform)
 
 ### NexusIQ AI Platform — Governed Multi-Company AI Data Analyst
 
